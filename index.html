@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Videographer Test Suite</title>
+</head>
+
+<body>
+	
+	<h1>Videographer Test Suite</h1>
+	
+	<video 
+		id="videoDemo"
+		src="http://brightcove.vo.llnwd.net/pd12/media/46434343001/46434343001_635488806001_trailer-480p.mp4"  
+		controls
+		preload="false" 
+		width="480" 
+		height="268" ></video>
+	
+	<script src="droidfix.js"></script>
+	
+	<script>
+		var vid = document.getElementById("videoDemo");
+		
+		vid.addEventListener("pause", function() {
+			console.debug("paused...");
+		});
+		
+		droidfix.init(vid);
+		droidfix.addEndListener(function(e){
+			console.debug(e);
+			console.debug("ended");
+		});
+	</script>
+</body>
+</html>	
+	

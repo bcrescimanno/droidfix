@@ -7,6 +7,9 @@
  * Adds a set of event listeners so the droid fires the "ended" and "pause" events
  * correctly on the android platform.
  * 
+ * Licensed under an MIT-style license
+ * http://www.opensource.org/licenses/mit-license.html
+ * 
  */
 var droidfix = (function() {
 	var el,
@@ -36,10 +39,9 @@ var droidfix = (function() {
 	
 	function ended(e) {
 		var complete = (el.currentTime === el.duration);
-		if(checkAndroidEnd()) {
+		if(complete || checkAndroidEnd()) {
 			executeEndCallbacks(e);
 		} else {
-			console.debug("triggering pause event");
 			triggerPause();
 		}
 	}
